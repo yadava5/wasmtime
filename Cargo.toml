@@ -1,0 +1,10 @@
+[package]
+name = "fuel-probe"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+wasmtime = { git = "https://github.com/bytecodealliance/wasmtime", rev = "5115b95ca" }
+
+[workspace]

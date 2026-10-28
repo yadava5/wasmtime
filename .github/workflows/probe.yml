@@ -1,0 +1,18 @@
+name: fuel-probe
+on:
+  push:
+    branches: [probe-fuel-cow-14331]
+jobs:
+  probe:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, ubuntu-24.04-arm, windows-2022, macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup toolchain install 1.98.1 --profile minimal && rustup default 1.98.1
+      - name: page size
+        shell: bash
+        run: getconf PAGESIZE 2>/dev/null || echo "page size: see probe"
+      - run: cargo run --release -q
