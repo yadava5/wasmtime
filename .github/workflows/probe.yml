@@ -14,5 +14,5 @@ jobs:
       - run: rustup toolchain install 1.98.1 --profile minimal && rustup default 1.98.1
       - name: page size
         shell: bash
-        run: getconf PAGESIZE 2>/dev/null || echo "page size: see probe"
+        run: getconf PAGESIZE 2>/dev/null || echo "no getconf"
       - run: cargo run --release -q
